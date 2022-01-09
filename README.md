@@ -30,6 +30,29 @@ Resulting in a line with the given format printed to stderr:
 20:18:26 TRACE src/main.c:11: Hello world
 ```
 
+Example:
+
+```c
+int main(int argc, char *argv[])
+{
+    log_set_level(0);
+    log_set_quiet(0);
+    FILE *fp;
+    fp = fopen("./log.txt", "ab");
+    if(fp == NULL)
+    {
+        return -1;
+    }
+    log_add_fp(fp, 0)
+
+    log_debug("debug");
+    log_info("info");
+    log_warn("warn");
+
+    fclose(fp);
+    return 0;
+}
+```
 
 #### log_set_quiet(bool enable)
 Quiet-mode can be enabled by passing `true` to the `log_set_quiet()` function.
